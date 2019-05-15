@@ -1,0 +1,267 @@
+{
+    "template_name": "PNGLO001R_IMPORT_SO_TESTING_png_i_b_nd_pl_fcl.xlsx",
+    "excel_data": {
+        "shipment_order": {
+            "control_num":"Yes",
+            "value": "JSSO",
+            "fields": [
+                "A3",
+                "B3",
+                "C3"
+            ]
+        },
+        "direct_to_customer": {
+            "control_num":"No",
+            "value": "No",
+            "fields": [
+                "L3"
+            ]
+        },
+        "container_number": {
+            "control_num":"Yes",
+            "value": "JSCN",
+            "fields": [
+                "AJ3",
+                "AL3",
+                "AN3"
+            ]
+        },
+        "bonded_nonbonded": {
+            "control_num":"No",
+            "value": "B",
+            "fields": [
+                "AK3"
+            ]
+        },
+        "shipment_mode": {
+            "control_num":"No",
+            "value": "FCL",
+            "fields": [
+                "AP3"
+            ]
+        },
+        "ship_mode": {
+            "control_num":"No",
+            "value": "SEA",
+            "fields": [
+                "F3"
+            ]
+        },
+        "container_size": {
+            "control_num":"No",
+            "value": "22GP",
+            "fields": [
+                "AM3"
+            ]
+        }
+    },
+    "tasks": {
+        "task01": {
+            "name": "Confirm Service PO / PO Conditions Exist/Correct (JP)",
+            "status": "Assigned",
+            "action": "Accept",
+            "fields": {
+                "User Comments;textarea": "Test comment data"
+            },
+            "submit": "Accept"
+        },
+        "task02": {
+            "name": "Upload Commercial Invoice (Import) (JP)",
+            "status": "Started",
+            "action": "Complete",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Commercial Invoice Number;input": "Test data",
+                "Goods Value;input": "Test data",
+                "Incoterm used in CI;input": "Test data",
+                "Currency;input": "Test data"
+            },
+            "submit": "Submit"
+        },
+        "task03": {
+            "name": "Confirm Pre-Alert Accurate & Complete (JP)",
+            "status": "Assigned",
+            "action": "Accept",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Commercial Invoice (Y/N/NA);select": "Y",
+                "Bill of Lading (Y/N/NA);select": "Y",
+                "PL/Tally Sheet (Y/N/NA);select": "Y",
+                "COA (Y/N/NA);select": "Y",
+                "Pre-Alert Received Date;input": "04 30 19 00:00"
+            },
+            "submit": "Accept"
+        },
+        "task04": {
+            "name": "Confirm FTA Documents Received & Accurate (JP)",
+            "status": "Assigned",
+            "action": "Accept",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "FTA Document Name;select": "Form AK",
+                "FTA Received Date;input": "April/30/2019"
+            },
+            "submit": "Accept"
+        },
+        "task05": {
+            "name": "Confirm Additional Import Customs Requirements (JP)",
+            "status": "Assigned",
+            "action": "Accept",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Cosmetic Notification (Y/N/NA);select": "Y",
+                "Chem Sub Control Law (Y/N/NA);select": "Y",
+                "JPR Pallet Agreement (Y/N/NA);select": "Y",
+                "Gas Inspect Cert (Y/N/NA);select": "Y",
+                "Quasi Drug App Lic (Y/N/NA);select": "Y",
+                "ASSIST Cost (Y/N/NA);select": "Y",
+                "Fire Length Test (Y/N/NA);select": "Y"
+            },
+            "submit": "Accept"
+        },
+        "task06": {
+            "name": "Confirm Import HS Code (JP)",
+            "status": "Assigned",
+            "action": "OK & Complete",
+            "fields": {
+                "User Comments;textarea": "Test comment data"
+            },
+            "submit": "OK & Complete"
+        },
+        "task07": {
+            "name": "Confirm All Import Documents Accurate and Complete (JP)",
+            "status": "Started",
+            "action": "Complete",
+            "fields": {
+                "User Comments;textarea": "Test comment data"
+            },
+            "submit": "Proceed"
+        },
+        "task08": {
+            "name": "Confirm Application for Payment to Customs System (JP)",
+            "status": "Assigned",
+            "action": "Pay Later",
+            "fields": {
+                "User Comments;textarea": "Test comment data"
+            },
+            "submit": "Pay Later"
+        },
+        "task09": {
+            "name": "Update ETA in Destination Port (JP)",
+            "status": "Started",
+            "action": "Update Milestone",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Latest ETA;input": "04 30 19 00:00"
+            },
+            "submit": "Update Milestone"
+        },
+        "task10": {
+            "name": "Confirm ATA in Destination Port (JP)",
+            "status": "Started",
+            "action": "Confirm Milestone",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Arrival Date (Actual);input": "04 30 19 00:00"
+            },
+            "submit": "Confirm Milestone"
+        },
+        "task11": {
+            "name": "Provide Draft First Point Delivery Schedule BONDED (Import) (JP)",
+            "status": "Started",
+            "action": "Propose Draft",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "First Point of Delivery;input-af": "Yas"
+            },
+            "submit": "Propose Draft"
+        },
+        "task12": {
+            "name": "Confirm First Point of Delivery Schedule BONDED (Import) (JP)",
+            "status": "Assigned",
+            "action": "Review & Confirm",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Non-Bonded or Bonded (NB or B);select": "B"
+            },
+            "submit": "Review & Confirm"
+        },
+        "task13": {
+            "name": "Accept First Point of Delivery Schedule (Import) (JP)",
+            "status": "Assigned",
+            "action": "Accept",
+            "fields": {
+                "User Comments;textarea": "Test comment data"
+            },
+            "submit": "Accept"
+        },
+        "task14": {
+            "name": "Bonded Movement Declaration (JP)",
+            "status": "Started",
+            "action": "Complete",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Actual Timestamp;input": "04 30 19 00:00",
+                "CDN #;input": "Test",
+                "Currency;input": "Test",
+                "Customs Duties;input": "Test",
+                "Consumption Tax;input": "Test",
+                "Incoterm;input": "Test",
+                "Customs Duties for Pallets;input": "Test",
+                "Consumption Tax for Pallets;input": "Test",
+                "Bonded Movement Declaration Date;input": "April/30/2019",
+                "FTA Applied at Import?;select": "Yes"
+            },
+            "submit": "Complete"
+        },
+        "task15": {
+            "name": "Confirm Gate-Out Timestamp (JP)",
+            "status": "Started",
+            "action": "Confirm Milestone",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Actual Timestamp;input": "04 30 19 00:00"
+            },
+            "submit": "Confirm Milestone"
+        },
+        "task16": {
+            "name": "Confirm Container First Point Delivery (Import) (JP)",
+            "status": "Started",
+            "action": "Complete",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Actual Timestamp;input": "04 30 19 00:00"
+            },
+            "submit": "Complete"
+        },
+        "task17": {
+            "name": "Confirm Empty Container Availability (JP)",
+            "status": "Started",
+            "action": "Complete",
+            "fields": {
+                "User Comments;textarea": "Test comment data"
+            },
+            "submit": "Complete"
+        },
+        "task18": {
+            "name": "Confirm Container Departs from Unloading Site (JP)",
+            "status": "Started",
+            "action": "Complete",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Actual Timestamp;input": "05 01 19 00:00"
+            },
+            "submit": "Complete"
+        },
+        "task19": {
+            "name": "Confirm Empty Container Returned (JP)",
+            "status": "Started",
+            "action": "Confirm Milestone",
+            "fields": {
+                "User Comments;textarea": "Test comment data",
+                "Actual Timestamp;input": "05 01 19 00:00"
+            },
+            "submit": "Confirm Milestone"
+        }
+    }
+}
