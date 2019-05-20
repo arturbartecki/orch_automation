@@ -1,0 +1,309 @@
+
+Running tests... 
+----------------------------------------------------------------------
+ test_png_i_b_nd_pl_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (617.784451)s
+ test_png_i_b_nd_pl_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (171.129395)s
+ test_png_i_nb_dc_pl_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (339.646605)s
+ test_png_i_nb_dc_pl_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (131.959898)s
+ test_png_i_nb_dc_pn_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (185.843136)s
+ test_png_i_nb_dc_pn_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (236.328970)s
+ test_png_i_nb_nd_pl_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (230.705159)s
+ test_png_i_nb_nd_pl_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (241.267488)s
+ test_png_i_nb_nd_pn_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (192.203063)s
+ test_png_i_nb_nd_pn_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (44.917672)s
+ test_png_payment_fi (JP_test_suite.CITPNGJPPaymentTests) ... ERROR (327.281782)s
+ test_png_payment_po (JP_test_suite.CITPNGJPPaymentTests) ... ERROR (440.877038)s
+ test_png_payment_po_to_fi (JP_test_suite.CITPNGJPPaymentTests) ... ERROR (49.329677)s
+
+======================================================================
+ERROR [617.784451s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Bonded Non Direct Pay Later FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 133, in test_png_i_b_nd_pl_fcl
+    driver, tasks['task07'], fpath
+  File "C:\Praca\Automation\orch_automation_tools.py", line 309, in exectue_task_with_upload
+    (By.XPATH, '//*[@id="messageBar"]'), 'Task(s) Processed')
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+======================================================================
+ERROR [171.129395s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Bonded Non Direct Pay Later LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 228, in test_png_i_b_nd_pl_lcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 459, in submit_main_excel
+    "//td[contains(text(),'Accepted')]"
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//td[contains(text(),'Accepted')]"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [339.646605s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Direct To Customer Pay Later FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1000, in test_png_i_nb_dc_pl_fcl
+    driver, tasks['task02'], fpath
+  File "C:\Praca\Automation\orch_automation_tools.py", line 309, in exectue_task_with_upload
+    (By.XPATH, '//*[@id="messageBar"]'), 'Task(s) Processed')
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+======================================================================
+ERROR [131.959898s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Direct To Customer Pay Later LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1092, in test_png_i_nb_dc_pl_lcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 459, in submit_main_excel
+    "//td[contains(text(),'Accepted')]"
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//td[contains(text(),'Accepted')]"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [185.843136s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Direct To Customer Pay Now FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 815, in test_png_i_nb_dc_pn_fcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 454, in submit_main_excel
+    '1 Files Imported Sucessfully'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+======================================================================
+ERROR [236.328970s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Direct To Customer Pay Now LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 906, in test_png_i_nb_dc_pn_lcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 459, in submit_main_excel
+    "//td[contains(text(),'Accepted')]"
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//td[contains(text(),'Accepted')]"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [230.705159s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Non Direct Pay Later FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 569, in test_png_i_nb_nd_pl_fcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 454, in submit_main_excel
+    '1 Files Imported Sucessfully'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+======================================================================
+ERROR [241.267488s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Non Direct Pay Later LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 704, in test_png_i_nb_nd_pl_lcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 459, in submit_main_excel
+    "//td[contains(text(),'Accepted')]"
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//td[contains(text(),'Accepted')]"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [192.203063s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Non Direct Pay Now FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 330, in test_png_i_nb_nd_pn_fcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 449, in submit_main_excel
+    submit_excel_file(driver, excel_file, 'Submit')
+  File "C:\Praca\Automation\orch_automation_tools.py", line 102, in submit_excel_file
+    '//span[contains(text(),"Browse...")]'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[contains(text(),"Browse...")]"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [44.917672s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Non Direct Pay Now LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 459, in test_png_i_nb_nd_pn_lcl
+    orch_automation_tools.login_user(driver, USER_4PL)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 133, in login_user
+    login_field = select_input_by_label(driver, 'Username', 'input')
+  File "C:\Praca\Automation\orch_automation_tools.py", line 174, in select_input_by_label
+    )(f'//div[@name="{label}"]//{input_type}')
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@name="Username"]//input"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [327.281782s]: JP_test_suite.CITPNGJPPaymentTests.test_png_payment_fi
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "C:\Python37\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "C:\Python37\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "C:\Python37\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "C:\Python37\lib\site-packages\urllib3\connection.py", line 181, in connect
+    conn = self._new_conn()
+  File "C:\Python37\lib\site-packages\urllib3\connection.py", line 168, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x03D047B0>: Failed to establish a new connection: [WinError 10061] Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1222, in setUp
+    self.driver.maximize_window()
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 737, in maximize_window
+    self.execute(command, params)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+  File "C:\Python37\lib\site-packages\urllib3\request.py", line 72, in request
+    **urlopen_kw)
+  File "C:\Python37\lib\site-packages\urllib3\request.py", line 150, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Python37\lib\site-packages\urllib3\poolmanager.py", line 323, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Python37\lib\site-packages\urllib3\connectionpool.py", line 667, in urlopen
+    **response_kw)
+  File "C:\Python37\lib\site-packages\urllib3\connectionpool.py", line 667, in urlopen
+    **response_kw)
+  File "C:\Python37\lib\site-packages\urllib3\connectionpool.py", line 667, in urlopen
+    **response_kw)
+  File "C:\Python37\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "C:\Python37\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=50598): Max retries exceeded with url: /session/342b5dbee7a01744e9dc0a7de0b713bc/window/current/maximize (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x03D047B0>: Failed to establish a new connection: [WinError 10061] Nie mo¿na nawi¹zaæ po³¹czenia, poniewa¿ komputer docelowy aktywnie go odmawia'))
+
+======================================================================
+ERROR [440.877038s]: JP_test_suite.CITPNGJPPaymentTests.PNG Payment PO no change
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1262, in test_png_payment_po
+    orch_automation_tools.exectue_simple_task(driver, tasks['task03'])
+  File "C:\Praca\Automation\orch_automation_tools.py", line 279, in exectue_simple_task
+    (By.XPATH, '//*[@id="messageBar"]'), 'Task(s) Processed')
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+======================================================================
+ERROR [49.329677s]: JP_test_suite.CITPNGJPPaymentTests.PNG Payment PO change to FI
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1328, in test_png_payment_po_to_fi
+    orch_automation_tools.login_user(driver, USER_4PL)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 133, in login_user
+    login_field = select_input_by_label(driver, 'Username', 'input')
+  File "C:\Praca\Automation\orch_automation_tools.py", line 174, in select_input_by_label
+    )(f'//div[@name="{label}"]//{input_type}')
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@name="Username"]//input"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+----------------------------------------------------------------------
+Ran 13 tests in 0:53:29
+
+FAILED
+ (Errors=13)
+
+Generating HTML reports... 
+reports\TestResults_CITPNGJPImportTests_CITPNGJPPaymentTests_2019-05-20_11-46-00.html

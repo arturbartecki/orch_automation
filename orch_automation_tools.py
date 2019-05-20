@@ -1,5 +1,6 @@
 # Standard library import
 import time
+import datetime
 import json
 import os
 import shutil
@@ -96,19 +97,15 @@ def submit_excel_file(driver, file_path, button):
     """
     actionChains = ActionChains(driver)
 
-    # Locate and move over Browse button to run JS script
     time.sleep(2)
     upload_button = driver.find_element_by_xpath(
         '//span[contains(text(),"Browse...")]'
     )
     actionChains.move_to_element(upload_button).perform()
 
-    # Locate and remove all styling from invisible div
     invisible_div = driver.find_element_by_xpath('/html/body/div[last()]')
     driver.execute_script("arguments[0].style = ' ';", invisible_div)
 
-    # Submit test file
-    # file_input = driver.find_element_by_xpath('/html/body/div[last()]/input')
     file_input = driver.find_element_by_xpath('//input[@type="file"]')
     file_input.send_keys(file_path)
     time.sleep(5)
@@ -183,16 +180,23 @@ def use_main_search_bar(driver, menu_item):
     driver - instance of selenium webdriver
     menu_item, str - name of the searched program
     """
-    time.sleep(2)
-    search_field = driver.find_element_by_xpath(
-        '*//div[@id="quicklinks"]//input[1]'
-    )
-    search_field.send_keys(menu_item)
-    time.sleep(4)
-    driver.find_element_by_xpath(
-        f'//div[@id="tooltip"]//li[contains(text(),"{menu_item}")]'
-    ).click()
-    wait_for_title_load(driver, menu_item)
+    for i in range(3):
+        try:
+            time.sleep(2)
+            search_field = driver.find_element_by_xpath(
+                '*//div[@id="quicklinks"]//input[1]'
+            )
+            search_field.send_keys(menu_item)
+            time.sleep(4)
+            driver.find_element_by_xpath(
+                f'//div[@id="tooltip"]//li[contains(text(),"{menu_item}")]'
+            ).click()
+            wait_for_title_load(driver, menu_item)
+            break
+        except (ElementNotVisibleException, EC.NoSuchElementException) as error:
+            continue
+    else:
+        print("There is a problem with selecting program {}".format(menu_item))
 
 
 def wait_for_title_load(driver, title):
@@ -240,13 +244,12 @@ def refresh_task_list(driver):
                 "//div[@id='contextMenu']//li[contains(text(),'Refresh')]"
             )
             actionChains.move_to_element(refresh).click(refresh).perform()
-            driver.find_element_by_xpath(
-                '//div[contains(text(), "Selected")]'
-            ).click()
             time.sleep(2)
             break
         except (EC.NoSuchElementException, EC.StaleElementReferenceException):
-            print("Action button error")
+            driver.find_element_by_xpath(
+                '//div[contains(text(), "Selected")]'
+            ).click()
             continue
 
 
@@ -262,15 +265,12 @@ def exectue_simple_task(driver, task_data):
     task_fields = task_data['fields']
     submit_task = task_data['submit']
 
-    # Pass task data to helper function
     use_task_context_menu(driver, task_name, task_status, context_action)
     time.sleep(5)
     driver.switch_to.window(driver.window_handles[-1])
 
-    # Fill fields
     fill_task_fields(driver, task_fields)
 
-    # Submit task
     driver.find_element_by_xpath(
         f"//a[contains(text(),'{submit_task}')]"
     ).click()
@@ -292,16 +292,14 @@ def exectue_task_with_upload(driver, task_data, test_file):
     context_action = task_data['action']
     task_fields = task_data['fields']
 
-    # Pass task data to helper function
     use_task_context_menu(driver, task_name, task_status, context_action)
     time.sleep(5)
     driver.switch_to.window(driver.window_handles[-1])
 
-    # Fill fields
     fill_task_fields(driver, task_fields)
-    # Proceed to file upload section
+
     driver.find_element_by_xpath("//a[contains(text(),'Proceed')]").click()
-    # Upload file
+
     time.sleep(2)
     driver.switch_to.window(driver.window_handles[-1])
     submit_excel_file(driver, test_file, 'Save')
@@ -368,7 +366,6 @@ def find_payment_tasks(
             ).click()
             break
         except EC.NoSuchElementException:
-            print("Search button error")
             driver.switch_to.window(driver.window_handles[-1])
             time.sleep(5)
 
@@ -377,41 +374,92 @@ def find_payment_tasks(
 
     driver.find_element_by_xpath("//a[contains(text(),'Search')]").click()
 
+
 def open_main_page(driver, url):
     for i in range(3):
         try:
             driver.get(url)
+            time.sleep(5)
             break
         except:
-            continue
+            driver.quit()
 
 
 def add_object_to_result_json(json_path, test_id, nowdate):
     """
     Add new object to result json
     json_path, str - path to environment json
+    test_id, str - datetime formated for files ending
+    nowdate, str - datetime formated for better readability
     """
-    with open(json_base, 'r+') as jsonFile:
+    with open(json_path, 'r+') as jsonFile:
         data = json.load(jsonFile)
     data['current_id'] = test_id
     data[test_id] = {
         "datetime":nowdate,
         "directory":test_id
     }
-    with open(json_base, "w") as jsonFile:
+    with open(json_path, "w") as jsonFile:
         json.dump(data, jsonFile)
 
 
 def move_excel_to_report(path, name, folder, reference):
     """
     Moves excel input file to report folder with changed name
+    path, str - path to the source excel
+    name, str - name of the source excel
+    folder, str - name of the destination folder
+    reference, str/int - reference number of the given excel
     """
     if os.path.exists(path):
         filename = '{}_{}{}'.format(name[:-5], reference, name[-5:])
-        destination_path = os.path.join(
+        report_folder = os.path.join(
             os.getcwd(),
             'reports',
-            folder,
+            folder
+        )
+        if not os.path.exists(report_folder):
+            os.mkdir(report_folder)
+
+        destination_path = os.path.join(
+            report_folder,
             filename
         )
         shutil.copy2(path, destination_path)
+
+
+def create_directory(json_path):
+    """
+    Function prepares directory for reporting and pass it into json file.
+    Tests can use this directory to copy excell files.
+    json_path, str - path to json that stores test results
+    """
+    nowdate = datetime.datetime.now()
+    file_date = nowdate.strftime('%d_%m_%Y_%H_%M')
+    format_date = nowdate.strftime('%d.%m.%Y %H:%M')
+    add_object_to_result_json(json_path, file_date, format_date)
+
+
+def submit_main_excel(driver, excel_file, program="Excel File Upload"):
+    """
+    Function wraps up navigating to excel file upload program,
+    uploads file and wait for it to process
+    """
+    use_main_search_bar(driver, program)
+    submit_excel_file(driver, excel_file, 'Submit')
+
+    WebDriverWait(driver, 120).until(
+        EC.text_to_be_present_in_element(
+            (By.XPATH, '//*[@id="messageBar"]'),
+            '1 Files Imported Sucessfully'
+        )
+    )
+    try:
+        driver.find_element_by_xpath(
+            "//td[contains(text(),'Accepted')]"
+        ).click()
+    except (EC.NoSuchElementException, EC.StaleElementReferenceException) as error:
+        print("File was processed with errors")
+        raise
+
+    close_current_tab(driver)

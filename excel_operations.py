@@ -33,6 +33,7 @@ def generate_excel_from_json(js_file, control_js, path):
     js_data = orch_automation_tools.parse_json_data(js_file)
     control_data = orch_automation_tools.parse_json_data(control_js)
     excel_template = os.path.join(path, js_data['template_name'])
+    
     wb_file = load_workbook(excel_template, data_only=True)
     wb_sheet = wb_file._sheets[0]
     for key, value in js_data['excel_data'].items():

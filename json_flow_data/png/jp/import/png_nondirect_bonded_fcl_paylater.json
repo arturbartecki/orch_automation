@@ -47,6 +47,13 @@
                 "F3"
             ]
         },
+        "seal_number": {
+            "control_num":"Yes",
+            "value": "SLJSSO",
+            "fields": [
+                "AL3"
+            ]
+        },
         "container_size": {
             "control_num":"No",
             "value": "22GP",
