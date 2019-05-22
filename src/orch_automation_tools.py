@@ -20,13 +20,14 @@ from selenium.webdriver.support.select import Select
 
 # Helper functions
 
-def fill_task_fields(driver, field_data):
+def fill_task_fields(driver, field_data, task_name):
     """
     Fill fields based on dictionary with locators, types and values
     driver - instance of selenium webdriver
     field_data - dictionary with fields. 
                 Key is fieldname;fieldtype. 
                 Value is value to pass
+    task_name, str - name of current task
     """
     for field, value in field_data.items():
         try:
@@ -40,12 +41,17 @@ def fill_task_fields(driver, field_data):
                     EC.StaleElementReferenceException,
                     ElementNotVisibleException
                 ):
-                    print("Select option {} is invalid".format(value))
+                    print(f"Select option {field} is invalid in task {task_name}")
+
             elif data[1] == 'input-af':
                 cur_field = select_input_by_label(driver, data[0], 'input')
                 cur_field.send_keys(value)
                 time.sleep(3)
+                # driver.find_element_by_xpath(
+                #     f'//div[@id="tooltip"]//li[contains(text(),"{value}")]'
+                # ).click()
                 cur_field.send_keys(Keys.ARROW_DOWN, Keys.RETURN)
+
             else:
                 cur_field = select_input_by_label(driver, data[0], data[1])
                 cur_field.send_keys(value)
@@ -54,8 +60,9 @@ def fill_task_fields(driver, field_data):
             EC.StaleElementReferenceException,
             ElementNotVisibleException
         ):
-            print("Field {} is invalid".format(data))
+            print(f"Field {data} is invalid in task {task_name}")
             raise
+
         time.sleep(1)
 
 
@@ -283,15 +290,18 @@ def exectue_simple_task(driver, task_data):
     time.sleep(5)
     driver.switch_to.window(driver.window_handles[-1])
 
-    fill_task_fields(driver, task_fields)
+    fill_task_fields(driver, task_fields, task_name)
 
     driver.find_element_by_xpath(
         f"//a[contains(text(),'{submit_task}')]"
     ).click()
-    WebDriverWait(driver, 120).until(
-        EC.text_to_be_present_in_element(
-            (By.XPATH, '//*[@id="messageBar"]'), 'Task(s) Processed')
-    )
+    try:
+        WebDriverWait(driver, 120).until(
+            EC.text_to_be_present_in_element(
+                (By.XPATH, '//*[@id="messageBar"]'), 'Task(s) Processed')
+        )
+    except TimeOutException:
+        print(f"Task {task_name} couldn't be processed. Check if fields are correct.")
 
 
 def exectue_task_with_upload(driver, task_data, test_file):
@@ -310,7 +320,7 @@ def exectue_task_with_upload(driver, task_data, test_file):
     time.sleep(5)
     driver.switch_to.window(driver.window_handles[-1])
 
-    fill_task_fields(driver, task_fields)
+    fill_task_fields(driver, task_fields, task_name)
 
     driver.find_element_by_xpath("//a[contains(text(),'Proceed')]").click()
 

@@ -309,7 +309,7 @@ class CITPNGJPImportTests(unittest.TestCase):
         self._testMethodName = "PNG Japan Import Non Bonded Non Direct Pay Now FCL"
         USER_4PL = self.USER_CREDENTIALS['4pl']
         USER_3PL = self.USER_CREDENTIALS['3pl-febre']
-        USER_WH = self.USER_CREDENTIALS['wh']
+        USER_WH = self.USER_CREDENTIALS['wh-akashi']
         json_file = os.path.join(self.JSON_PATH, 'png_nondirect_nonbonded_fcl_paynow.json')
         excel_data = generate_excel_from_json(
             json_file, self.CONTROL_JSON, self.EXCEL_PATH
@@ -389,7 +389,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.find_tasks(
             driver, 'P&G WH TaskList JP', container_number,
-            'Equipment/Container #', 'Consignment'
+            'Equipment/Container#', 'Consignment'
         )
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task14'])
@@ -411,7 +411,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.find_tasks(
             driver, 'P&G WH TaskList JP', container_number,
-            'Equipment/Container #', 'Consignment'
+            'Equipment/Container#', 'Consignment'
         )
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task18'])
@@ -519,7 +519,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.find_tasks(
             driver, 'P&G WH TaskList JP', container_number,
-            'Equipment/Container #', 'Consignment'
+            'Equipment/Container#', 'Consignment'
         )
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task14'])
