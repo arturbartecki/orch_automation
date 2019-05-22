@@ -1,15 +1,12 @@
+FROM python:3.7-alpine3.7
 
-FROM python:3.7-alpine3.8
-MAINTAINER Artur Bartecki
+RUN echo "http://dl-4.alpinelinux.org/alpine/v3.7/main" >> /etc/apk/repositories && \
+    echo "http://dl-4.alpinelinux.org/alpine/v3.7/community" >> /etc/apk/repositories
 
-# Create project and set project scope
-RUN mkdir /code
-WORKDIR /code
+RUN apk update && apk add build-base git chromium chromium-chromedriver
 
-# Install chromedriver
-RUN apk update
-RUN apk add chromium chromium-chromedriver
+RUN mkdir /src
+WORKDIR /src
+COPY ./src /src
 
-# Copy and install requirements
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt

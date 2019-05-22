@@ -1,0 +1,314 @@
+
+Running tests... 
+----------------------------------------------------------------------
+ test_png_i_b_nd_pl_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (215.246882)s
+ test_png_i_b_nd_pl_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (120.332393)s
+ test_png_i_nb_dc_pl_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (249.409665)s
+ test_png_i_nb_dc_pl_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (131.680261)s
+ test_png_i_nb_dc_pn_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (173.311963)s
+ test_png_i_nb_dc_pn_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (125.142685)s
+ test_png_i_nb_nd_pl_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (757.004347)s
+ test_png_i_nb_nd_pl_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (38.817274)s
+ test_png_i_nb_nd_pn_fcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (41.003392)s
+ test_png_i_nb_nd_pn_lcl (JP_test_suite.CITPNGJPImportTests) ... ERROR (40.221711)s
+ test_png_payment_fi (JP_test_suite.CITPNGJPPaymentTests) ... ERROR (32.368982)s
+ test_png_payment_po (JP_test_suite.CITPNGJPPaymentTests) ... ERROR (17.689862)s
+ test_png_payment_po_to_fi (JP_test_suite.CITPNGJPPaymentTests) ... ERROR (32.028346)s
+
+======================================================================
+ERROR [215.246882s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Bonded Non Direct Pay Later FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 108, in test_png_i_b_nd_pl_fcl
+    driver, '4PL Task List (JP)', shipment_order, 'PO# (1st Leg)'
+  File "C:\Praca\Automation\orch_automation_tools.py", line 327, in find_tasks
+    '//div[@id="tabs"]//a[contains(text(), "Search")]'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [120.332393s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Bonded Non Direct Pay Later LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 228, in test_png_i_b_nd_pl_lcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 459, in submit_main_excel
+    "//td[contains(text(),'Accepted')]"
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//td[contains(text(),'Accepted')]"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [249.409665s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Direct To Customer Pay Later FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1003, in test_png_i_nb_dc_pl_fcl
+    orch_automation_tools.change_user(driver, USER_3PL)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 160, in change_user
+    logout_user(driver)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 148, in logout_user
+    driver.find_element_by_xpath('//*[@id="conf"]/div[3]/a[1]').click()
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [131.680261s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Direct To Customer Pay Later LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1092, in test_png_i_nb_dc_pl_lcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 459, in submit_main_excel
+    "//td[contains(text(),'Accepted')]"
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//td[contains(text(),'Accepted')]"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [173.311963s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Direct To Customer Pay Now FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 815, in test_png_i_nb_dc_pn_fcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 454, in submit_main_excel
+    '1 Files Imported Sucessfully'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+======================================================================
+ERROR [125.142685s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Direct To Customer Pay Now LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 906, in test_png_i_nb_dc_pn_lcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 459, in submit_main_excel
+    "//td[contains(text(),'Accepted')]"
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//td[contains(text(),'Accepted')]"}
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [757.004347s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Non Direct Pay Later FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 620, in test_png_i_nb_nd_pl_fcl
+    orch_automation_tools.exectue_simple_task(driver, tasks['task10'])
+  File "C:\Praca\Automation\orch_automation_tools.py", line 279, in exectue_simple_task
+    (By.XPATH, '//*[@id="messageBar"]'), 'Task(s) Processed')
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\wait.py", line 71, in until
+    value = method(self._driver)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 209, in __call__
+    element_text = _find_element(driver, self.locator).text
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 415, in _find_element
+    raise e
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 411, in _find_element
+    return driver.find_element(*by)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [38.817274s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Non Direct Pay Later LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 704, in test_png_i_nb_nd_pl_lcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 448, in submit_main_excel
+    use_main_search_bar(driver, program)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 194, in use_main_search_bar
+    wait_for_title_load(driver, menu_item)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 211, in wait_for_title_load
+    EC.title_is(title)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\wait.py", line 71, in until
+    value = method(self._driver)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 39, in __call__
+    return self.title == driver.title
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 342, in title
+    resp = self.execute(Command.GET_TITLE)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [41.003392s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Non Direct Pay Now FCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 330, in test_png_i_nb_nd_pn_fcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 448, in submit_main_excel
+    use_main_search_bar(driver, program)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 194, in use_main_search_bar
+    wait_for_title_load(driver, menu_item)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 211, in wait_for_title_load
+    EC.title_is(title)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\wait.py", line 71, in until
+    value = method(self._driver)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\support\expected_conditions.py", line 39, in __call__
+    return self.title == driver.title
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 342, in title
+    resp = self.execute(Command.GET_TITLE)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [40.221711s]: JP_test_suite.CITPNGJPImportTests.PNG Japan Import Non Bonded Non Direct Pay Now LCL
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 460, in test_png_i_nb_nd_pn_lcl
+    orch_automation_tools.submit_main_excel(driver, self.excel_template)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 449, in submit_main_excel
+    submit_excel_file(driver, excel_file, 'Submit')
+  File "C:\Praca\Automation\orch_automation_tools.py", line 106, in submit_excel_file
+    invisible_div = driver.find_element_by_xpath('/html/body/div[last()]')
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [32.368982s]: JP_test_suite.CITPNGJPPaymentTests.PNG Payment FI No change
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1290, in test_png_payment_fi
+    orch_automation_tools.submit_main_excel(driver, self.excel_template, 'Excel Sheet Upload')
+  File "C:\Praca\Automation\orch_automation_tools.py", line 448, in submit_main_excel
+    use_main_search_bar(driver, program)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 187, in use_main_search_bar
+    '*//div[@id="quicklinks"]//input[1]'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [17.689862s]: JP_test_suite.CITPNGJPPaymentTests.test_png_payment_po
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1222, in setUp
+    self.driver.maximize_window()
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 737, in maximize_window
+    self.execute(command, params)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [32.028346s]: JP_test_suite.CITPNGJPPaymentTests.PNG Payment PO change to FI
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\JP_test_suite.py", line 1329, in test_png_payment_po_to_fi
+    orch_automation_tools.submit_main_excel(driver, self.excel_template, 'Excel Sheet Upload')
+  File "C:\Praca\Automation\orch_automation_tools.py", line 448, in submit_main_excel
+    use_main_search_bar(driver, program)
+  File "C:\Praca\Automation\orch_automation_tools.py", line 187, in use_main_search_bar
+    '*//div[@id="quicklinks"]//input[1]'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=74.0.3729.157)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+----------------------------------------------------------------------
+Ran 13 tests in 0:32:54
+
+FAILED
+ (Errors=13)
+
+Generating HTML reports... 
+reports\TestResults_CITPNGJPImportTests_CITPNGJPPaymentTests_2019-05-21_10-29-37.html
