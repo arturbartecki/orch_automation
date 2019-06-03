@@ -8,8 +8,7 @@ import shutil
 # Third party import
 from selenium.common.exceptions import (
     TimeoutException,
-    ElementNotVisibleException
-)
+    ElementNotVisibleException)
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -17,6 +16,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
 
+# Base path
+base_path = os.path.abspath(os.path.dirname(__file__))
 
 # Helper functions
 
@@ -75,7 +76,7 @@ def use_task_context_menu(driver, task_name, status, action):
     status, str - task status which is needed to complete it
     action, str -  action to perform on the context menu
     """
-    for i in range(30):
+    for i in range(45):
         try:
             actionChains = ActionChains(driver)
             task = driver.find_element_by_xpath(
@@ -97,15 +98,15 @@ def use_task_context_menu(driver, task_name, status, action):
             ).click()
             break
         except (
-            EC.NoSuchElementException,
-            EC.StaleElementReferenceException,
-            ElementNotVisibleException
-        ):
-            
+                EC.NoSuchElementException,
+                EC.StaleElementReferenceException,
+                ElementNotVisibleException):
+
             time.sleep(5)
             refresh_task_list(driver)
             continue
     else:
+        raise
         print(f"Task {task_name} status is not valid, or task is not visible")
 
 
@@ -217,7 +218,8 @@ def use_main_search_bar(driver, menu_item):
         except (ElementNotVisibleException, EC.NoSuchElementException) as error:
             continue
     else:
-        print("There is a problem with selecting program {}".format(menu_item))
+        raise
+        print(f"There is a problem with selecting program {menu_item}")
 
 
 def wait_for_title_load(driver, title):
@@ -328,10 +330,13 @@ def exectue_task_with_upload(driver, task_data, test_file):
     driver.switch_to.window(driver.window_handles[-1])
     submit_excel_file(driver, test_file, 'Save')
 
-    WebDriverWait(driver, 60).until(
-        EC.text_to_be_present_in_element(
-            (By.XPATH, '//*[@id="messageBar"]'), 'Task(s) Processed')
-    )
+    try:
+        WebDriverWait(driver, 120).until(
+            EC.text_to_be_present_in_element(
+                (By.XPATH, '//*[@id="messageBar"]'), 'Task(s) Processed')
+        )
+    except TimeOutException:
+        print(f"Task {task_name} couldn't be processed. Check if fields are correct.")
 
 
 def find_tasks(driver, program, reference, label, entity="Shipment Order"):
@@ -370,9 +375,8 @@ def find_tasks(driver, program, reference, label, entity="Shipment Order"):
 
 
 def find_payment_tasks(
-    driver, program,
-    invoice, label='Link ID / Invoice Number'
-):
+        driver, program,
+        invoice, label='Link ID / Invoice Number'):
     """
     Function finds task list for given instance in payment process
     driver - selenium webdriver instance
@@ -438,7 +442,7 @@ def move_excel_to_report(path, name, folder, reference):
     if os.path.exists(path):
         filename = '{}_{}{}'.format(name[:-5], reference, name[-5:])
         report_folder = os.path.join(
-            os.getcwd(),
+            base_path,
             'reports',
             folder
         )
@@ -472,7 +476,7 @@ def submit_main_excel(driver, excel_file, program="Excel File Upload"):
     use_main_search_bar(driver, program)
     submit_excel_file(driver, excel_file, 'Submit')
 
-    WebDriverWait(driver, 120).until(
+    WebDriverWait(driver, 240).until(
         EC.text_to_be_present_in_element(
             (By.XPATH, '//*[@id="messageBar"]'),
             '1 Files Imported Sucessfully'
@@ -487,3 +491,46 @@ def submit_main_excel(driver, excel_file, program="Excel File Upload"):
         raise
 
     close_current_tab(driver)
+
+
+def check_payment_status(driver, payment_id, program="P&G Invoices for Payment Tracking"):
+    """
+    """
+    use_main_search_bar(driver, program)
+    invoice_status = Select(select_input_by_label(
+        driver, 'Status', 'select')
+    )
+    invoice_status.select_by_visible_text('Cancelled')
+    invoice_number = select_input_by_label(
+        driver, 'Invoice Number', 'input[@type="text"]'
+    )
+    invoice_number.send_keys(payment_id)
+
+    for i in range(10):
+        try:
+            driver.find_element_by_xpath("//a[contains(text(),'Search')]").click()
+            actionChains = ActionChains(driver)
+            invoice = driver.find_element_by_xpath(
+                f"//div[contains(text(),'{payment_id}')]"
+            )
+            invoice.click()
+            time.sleep(3)
+            invoice = driver.find_element_by_xpath(
+                f"//div[contains(text(),'{payment_id}')]"
+            )
+            actionChains.context_click(invoice).perform()
+            time.sleep(3)
+            driver.find_element_by_xpath(
+                f'//div[@id="contextMenu"]//li[contains(text(),"View")]'
+            ).click()
+            break
+        except (
+                EC.NoSuchElementException,
+                EC.StaleElementReferenceException,
+                ElementNotVisibleException):
+
+            time.sleep(5)
+            continue
+    time.sleep(2)
+    invoice_status = driver.find_element_by_xpath("//div[@name='Status']//div[@class='value']//div")
+    assert "Cancelled" == invoice_status.text, "Invoice status is not cancelled"

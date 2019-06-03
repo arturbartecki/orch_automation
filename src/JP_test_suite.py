@@ -15,24 +15,27 @@ from selenium.webdriver.chrome.options import Options
 import orch_automation_tools
 from excel_operations import generate_excel_from_json
 
+# Base path
+base_path = os.path.abspath(os.path.dirname(__file__))
+
 
 class CITPNGJPImportTests(unittest.TestCase):
     """Test suite for CIT PNG JP IMPORT"""
     BASE_URL = 'https://ct-cit.damco.com/'
     CONTROL_JSON = os.path.join(
-            os.getcwd(),
+            base_path,
             'json_flow_data',
             'CIT_BASE.json'
     )
     EXCEL_PATH = os.path.join(
-            os.getcwd(),
+            base_path,
             'excel_files',
             'png',
             'jp',
             'import'
     )
     JSON_PATH = os.path.join(
-            os.getcwd(),
+            base_path,
             'json_flow_data',
             'png',
             'jp',
@@ -40,14 +43,14 @@ class CITPNGJPImportTests(unittest.TestCase):
     )
     USER_CREDENTIALS = orch_automation_tools.parse_json_data(
         os.path.join(
-            os.getcwd(),
+            base_path,
             'json_flow_data',
             'CIT_ACCESS.json'
         )
     )['png']['jp']['import']
     TEST_REPORT_JSON = orch_automation_tools.parse_json_data(
         os.path.join(
-            os.getcwd(),
+            base_path,
             'json_flow_data',
             'CIT_RESULTS.json'
         )
@@ -60,7 +63,7 @@ class CITPNGJPImportTests(unittest.TestCase):
     def setUp(self):
         chrome_options = Options()
         chrome_driver = os.path.join(
-            os.getcwd(), 'chromedriver', 'chromedriver.exe'
+            base_path, 'chromedriver', 'chromedriver.exe'
         )
         # chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(executable_path=chrome_driver, options=chrome_options)
@@ -69,12 +72,12 @@ class CITPNGJPImportTests(unittest.TestCase):
         # self.driver.get(self.BASE_URL)
         self.driver.maximize_window()
         self.test_file = os.path.join(
-            os.getcwd(),
+            base_path,
             'excel_files',
             "TEST_FILE.xlsx"
         )
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_b_nd_pl_fcl(self):
         """
         P&G Import Non Bonded Non Direct Customer - Pay Now(FCL)
@@ -110,7 +113,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -198,7 +201,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task19'])
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_b_nd_pl_lcl(self):
         """
         P&G Import Non Bonded Non Direct Customer - Pay Now(FCL)
@@ -233,7 +236,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -301,7 +304,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task16'])
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_nb_nd_pn_fcl(self):
         """
         P&G Import Bonded Non Direct Customer - Pay Later(FCL)
@@ -335,7 +338,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -427,7 +430,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task20'])
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_nb_nd_pn_lcl(self):
         """
         P&G Import Non Bonded Non Direct Customer - Pay Now(LCL)
@@ -465,7 +468,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -537,7 +540,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task17'])
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_nb_nd_pl_fcl(self):
         """
         P&G Import Non Bonded Non Direct Customer - Pay Later(FCL)
@@ -574,7 +577,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -672,7 +675,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task20'])
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_nb_nd_pl_lcl(self):
         """
         P&G Import Non Bonded Non Direct Customer - Pay Later(LCL)
@@ -709,7 +712,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -787,7 +790,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task17'])
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_nb_dc_pn_fcl(self):
         """
         P&G Import Bonded Non Direct Customer - Pay Later(FCL)
@@ -820,7 +823,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -874,7 +877,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task14'])
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_nb_dc_pn_lcl(self):
         """
         P&G Import Non Bonded Non Direct Customer - Pay Now(LCL)
@@ -911,7 +914,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -959,7 +962,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task12'])
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_nb_dc_pl_fcl(self):
         """
         P&G Import Non Bonded Non Direct Customer - Pay Later(FCL)
@@ -995,7 +998,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -1061,7 +1064,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task15'])
 
-    # @unittest.skip("Skipping...")
+    @unittest.skip("Skipping...")
     def test_png_i_nb_dc_pl_lcl(self):
         """
         P&G Import Non Bonded Non Direct Customer - Pay Later(LCL)
@@ -1097,7 +1100,7 @@ class CITPNGJPImportTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
 
-        fpath = os.path.join(os.getcwd(), self.test_file)
+        fpath = os.path.join(base_path, self.test_file)
         orch_automation_tools.exectue_task_with_upload(
             driver, tasks['task02'], fpath
         )
@@ -1170,12 +1173,12 @@ class CITPNGJPPaymentTests(unittest.TestCase):
     """Test suite for CIT PNG JP IMPORT"""
     BASE_URL = 'https://ct-cit.damco.com/'
     CONTROL_JSON = os.path.join(
-            os.getcwd(),
+            base_path,
             'json_flow_data',
             'CIT_BASE.json'
         )
     EXCEL_PATH = os.path.join(
-            os.getcwd(),
+            base_path,
             'excel_files',
             'png',
             'jp',
@@ -1183,7 +1186,7 @@ class CITPNGJPPaymentTests(unittest.TestCase):
 
         )
     JSON_PATH = os.path.join(
-            os.getcwd(),
+            base_path,
             'json_flow_data',
             'png',
             'jp',
@@ -1191,14 +1194,14 @@ class CITPNGJPPaymentTests(unittest.TestCase):
         )
     USER_CREDENTIALS = orch_automation_tools.parse_json_data(
         os.path.join(
-            os.getcwd(),
+            base_path,
             'json_flow_data',
             'CIT_ACCESS.json'
         )
     )['png']['jp']['payment']
     TEST_REPORT_JSON = orch_automation_tools.parse_json_data(
         os.path.join(
-            os.getcwd(),
+            base_path,
             'json_flow_data',
             'CIT_RESULTS.json'
         )
@@ -1213,7 +1216,7 @@ class CITPNGJPPaymentTests(unittest.TestCase):
         chrome_options = Options()
         # chrome_options.add_argument("--headless")
         chrome_driver = os.path.join(
-            os.getcwd(), 'chromedriver', 'chromedriver.exe'
+            base_path, 'chromedriver', 'chromedriver.exe'
         )
         self.driver = webdriver.Chrome(executable_path=chrome_driver, options=chrome_options)
         self.driver.implicitly_wait(20)
@@ -1221,18 +1224,18 @@ class CITPNGJPPaymentTests(unittest.TestCase):
         orch_automation_tools.open_main_page(self.driver, self.BASE_URL)
         self.driver.maximize_window()
         self.test_file = os.path.join(
-            os.getcwd(),
+            base_path,
             'excel_files',
             "TEST_FILE.xlsx"
         )
 
-    # @unittest.skip("Skipping...")
-    def test_png_payment_po(self):
+    @unittest.skip("Skipping...")
+    def test_png_jp_payment_po(self):
         """P&G Payment JP Test. PO Conditions flow."""
         self._testMethodName = "PNG Payment PO no change"
         USER_4PL = self.USER_CREDENTIALS['4pl']
-        test_case_name = 'wowlolo'
-        json_file = os.path.join(self.JSON_PATH, 'png_po.json')
+
+        json_file = os.path.join(self.JSON_PATH, 'png_jp_po.json')
         excel_data = generate_excel_from_json(
             json_file, self.CONTROL_JSON, self.EXCEL_PATH
         )
@@ -1263,13 +1266,13 @@ class CITPNGJPPaymentTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task04'])
 
-    # @unittest.skip("Skipping...")
-    def test_png_payment_fi(self):
+    @unittest.skip("Skipping...")
+    def test_png_jp_payment_fi(self):
         """P&G Payment JP Test. FI Conditions flow."""
         self._testMethodName = "PNG Payment FI No change"
         USER_4PL = self.USER_CREDENTIALS['4pl']
 
-        json_file = os.path.join(self.JSON_PATH, 'png_fi_jptcd.json')
+        json_file = os.path.join(self.JSON_PATH, 'png_jp_fi.json')
         excel_data = generate_excel_from_json(
             json_file, self.CONTROL_JSON, self.EXCEL_PATH
         )
@@ -1303,13 +1306,13 @@ class CITPNGJPPaymentTests(unittest.TestCase):
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task05'])
 
-    # @unittest.skip("Skipping...")
-    def test_png_payment_po_to_fi(self):
+    @unittest.skip("Skipping...")
+    def test_png_jp_payment_po_to_fi(self):
         """P&G Payment JP Test. SPO Conditions to FI."""
         self._testMethodName = "PNG Payment PO change to FI"
         USER_4PL = self.USER_CREDENTIALS['4pl']
 
-        json_file = os.path.join(self.JSON_PATH, 'png_po_to_fi.json')
+        json_file = os.path.join(self.JSON_PATH, 'png_jp_po_to_fi.json')
         excel_data = generate_excel_from_json(
             json_file, self.CONTROL_JSON, self.EXCEL_PATH
         )
@@ -1341,6 +1344,210 @@ class CITPNGJPPaymentTests(unittest.TestCase):
         orch_automation_tools.exectue_simple_task(driver, tasks['task04'])
 
         orch_automation_tools.exectue_simple_task(driver, tasks['task05'])
+    
+    # @unittest.skip("Skipping...")
+    def test_png_jp_payment_po_3pl_access(self):
+        """P&G Payment JP Test. PO Conditions flow."""
+        self._testMethodName = "PNG Payment PO no change 3PL Has Access"
+        USER_4PL = self.USER_CREDENTIALS['4pl']
+        USER_3PL = self.USER_CREDENTIALS['3pl']
+
+        json_file = os.path.join(self.JSON_PATH, 'png_jp_po_3pl_system.json')
+        excel_data = generate_excel_from_json(
+            json_file, self.CONTROL_JSON, self.EXCEL_PATH
+        )
+        
+        json_data = orch_automation_tools.parse_json_data(json_file)
+        
+        self.excel_name = json_data['template_name']
+        self.excel_template = os.path.join(
+            self.EXCEL_PATH, self.excel_name
+        )
+        self.reference_number = excel_data['invoice_number']
+        invoice_no = excel_data['invoice_number']
+        tasks = json_data['tasks']
+        driver = self.driver
+
+        orch_automation_tools.login_user(driver, USER_4PL)
+        orch_automation_tools.submit_main_excel(driver, self.excel_template, 'Excel Sheet Upload')
+
+        orch_automation_tools.find_payment_tasks(
+            driver, 'P&G Payment Tracker To Do List JP', invoice_no
+        )
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task02'])
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task03'])
+
+        orch_automation_tools.change_user(driver, USER_3PL)
+        orch_automation_tools.find_tasks(
+            driver, 'P&G 3PL Task List JP', invoice_no, 'Link-ID'
+        )
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task04'])
+
+    # @unittest.skip("Skipping...")
+    def test_png_jp_payment_fi_3pl_access(self):
+        """P&G Payment JP Test. FI Conditions flow."""
+        self._testMethodName = "PNG Payment FI No change 3PL Has Access"
+        USER_4PL = self.USER_CREDENTIALS['4pl']
+        USER_3PL = self.USER_CREDENTIALS['3pl']
+
+        json_file = os.path.join(self.JSON_PATH, 'png_jp_fi_3pl_system.json')
+        excel_data = generate_excel_from_json(
+            json_file, self.CONTROL_JSON, self.EXCEL_PATH
+        )
+        json_data = orch_automation_tools.parse_json_data(json_file)
+        self.excel_name = json_data['template_name']
+        self.excel_template = os.path.join(
+            self.EXCEL_PATH, self.excel_name
+        )
+        self.reference_number = excel_data['invoice_number']
+
+        invoice_no = excel_data['invoice_number']
+        tasks = json_data['tasks']
+
+        driver = self.driver
+
+        orch_automation_tools.login_user(driver, USER_4PL)
+
+        orch_automation_tools.submit_main_excel(driver, self.excel_template, 'Excel Sheet Upload')
+
+        orch_automation_tools.find_payment_tasks(
+            driver, 'P&G Payment Tracker To Do List JP', invoice_no
+        )
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task02'])
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task03'])
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task04'])
+
+        orch_automation_tools.change_user(driver, USER_3PL)
+        orch_automation_tools.find_tasks(
+            driver, 'P&G 3PL Task List JP', invoice_no, 'Link-ID'
+        )
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task05'])
+
+    # @unittest.skip("Skipping...")
+    def test_png_jp_payment_po_to_fi_3pl_access(self):
+        """P&G Payment JP Test. SPO Conditions to FI."""
+        self._testMethodName = "PNG Payment PO change to FI 3PL Has Access"
+        USER_4PL = self.USER_CREDENTIALS['4pl']
+        USER_3PL = self.USER_CREDENTIALS['3pl']
+
+        json_file = os.path.join(self.JSON_PATH, 'png_jp_po_to_fi_3pl_system.json')
+        excel_data = generate_excel_from_json(
+            json_file, self.CONTROL_JSON, self.EXCEL_PATH
+        )
+        json_data = orch_automation_tools.parse_json_data(json_file)
+        self.excel_name = json_data['template_name']
+        self.excel_template = os.path.join(
+            self.EXCEL_PATH, self.excel_name
+        )
+        self.reference_number = excel_data['invoice_number']
+
+        invoice_no = excel_data['invoice_number']
+        tasks = json_data['tasks']
+
+        driver = self.driver
+
+        orch_automation_tools.login_user(driver, USER_4PL)
+        orch_automation_tools.submit_main_excel(driver, self.excel_template, 'Excel Sheet Upload')
+
+        orch_automation_tools.find_payment_tasks(
+            driver, 'P&G Payment Tracker To Do List JP', invoice_no
+        )
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task02'])
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task03'])
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task04'])
+
+        orch_automation_tools.change_user(driver, USER_3PL)
+        orch_automation_tools.find_tasks(
+            driver, 'P&G 3PL Task List JP', invoice_no, 'Link-ID'
+        )
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task05'])
+    
+    @unittest.skip("Skipping...")
+    def test_png_jp_payment_po_rejection(self):
+        """P&G Payment JP Test. PO Conditions flow."""
+        self._testMethodName = "PNG Payment PO Rejection"
+        USER_4PL = self.USER_CREDENTIALS['4pl']
+
+        json_file = os.path.join(self.JSON_PATH, 'png_jp_po_reject.json')
+        excel_data = generate_excel_from_json(
+            json_file, self.CONTROL_JSON, self.EXCEL_PATH
+        )
+        
+        json_data = orch_automation_tools.parse_json_data(json_file)
+        
+        self.excel_name = json_data['template_name']
+        self.excel_template = os.path.join(
+            self.EXCEL_PATH, self.excel_name
+        )
+        self.reference_number = excel_data['invoice_number']
+        invoice_no = excel_data['invoice_number']
+        tasks = json_data['tasks']
+        driver = self.driver
+
+        orch_automation_tools.login_user(driver, USER_4PL)
+        orch_automation_tools.submit_main_excel(driver, self.excel_template, 'Excel Sheet Upload')
+
+        orch_automation_tools.find_payment_tasks(
+            driver, 'P&G Payment Tracker To Do List JP', invoice_no
+        )
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
+
+        orch_automation_tools.close_current_tab(driver)
+        orch_automation_tools.check_payment_status(driver, invoice_no)
+
+    @unittest.skip("Skipping...")
+    def test_png_jp_payment_fi_rejection(self):
+        """P&G Payment JP Test. FI Conditions flow."""
+        self._testMethodName = "PNG Payment FI Rejection"
+        USER_4PL = self.USER_CREDENTIALS['4pl']
+
+        json_file = os.path.join(self.JSON_PATH, 'png_jp_fi_reject.json')
+        excel_data = generate_excel_from_json(
+            json_file, self.CONTROL_JSON, self.EXCEL_PATH
+        )
+        json_data = orch_automation_tools.parse_json_data(json_file)
+        self.excel_name = json_data['template_name']
+        self.excel_template = os.path.join(
+            self.EXCEL_PATH, self.excel_name
+        )
+        self.reference_number = excel_data['invoice_number']
+
+        invoice_no = excel_data['invoice_number']
+        tasks = json_data['tasks']
+
+        driver = self.driver
+
+        orch_automation_tools.login_user(driver, USER_4PL)
+
+        orch_automation_tools.submit_main_excel(driver, self.excel_template, 'Excel Sheet Upload')
+
+        orch_automation_tools.find_payment_tasks(
+            driver, 'P&G Payment Tracker To Do List JP', invoice_no
+        )
+
+        orch_automation_tools.exectue_simple_task(driver, tasks['task01'])
+
+        orch_automation_tools.close_current_tab(driver)
+        orch_automation_tools.check_payment_status(driver, invoice_no)
+
 
     def tearDown(self):
         # close the browser window

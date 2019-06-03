@@ -7,11 +7,12 @@ from HtmlTestRunner import HTMLTestRunner
 import orch_automation_tools
 import JP_test_suite
  
-direct = os.getcwd()
+# Base path
+base_path = os.path.abspath(os.path.dirname(__file__))
  
 class CITTestSuite(unittest.TestCase):
     CONTROL_JSON = os.path.join(
-            os.getcwd(),
+            base_path,
             'json_flow_data',
             'CIT_RESULTS.json'
     )
@@ -32,7 +33,8 @@ class CITTestSuite(unittest.TestCase):
         runner1 = HTMLTestRunner(
             combine_reports=True,
             stream=outfile,
-            report_title='Test Report'
+            report_title='Test Report',
+            output=os.path.join(base_path, "reports")
         )
 
         runner1.run(smoke_test)

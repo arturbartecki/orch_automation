@@ -1,0 +1,82 @@
+{
+    "template_name":"PNGLO001R_JP_INVOICE_SO_PO_TO_FI_3PL_SYSTEM.xlsx",
+    "excel_data":{
+        "invoice_number":{
+            "control_num":"Yes",
+            "value":"JSSO",
+            "fields":[
+                "C3",
+                "D3"
+            ]
+        },
+        "payment_method":{
+            "control_num":"No",
+            "value":"PO Conditions",
+            "fields":[
+                "L3"
+            ]
+        },
+        "supplier_code":{
+            "control_num":"No",
+            "value":"0015088107",
+            "fields":[
+                "I3"
+            ]
+        }
+    },
+    "payment_method":"PO Conditions",
+    "tasks":{
+        "task01":{
+            "name":"Invoice Verification Complete (JP)",
+            "status":"Assigned",
+            "action":"Accept - Invoice Correct",
+            "fields":{
+                "User Comments;textarea":"Test comment",
+                "Payment Method;select":"FI (JP TCD)",
+                "Update Verification Complete Date;input":"01 May 2019"
+            },
+            "submit":"Accept - Invoice Correct"
+        },
+        "task02":{
+            "name":"Raised EPRF (JP)",
+            "status":"Started",
+            "action":"Complete",
+            "fields":{
+                "User Comments;textarea":"Test comment",
+                "End Date (Actual);input":"07 05 19 14:34",
+                "Raised EPRF Date;input":"01 May 2019"
+            },
+            "submit":"Complete"
+        },
+        "task03":{
+            "name":"Invoice Dispatched to P2P (JP)",
+            "status":"Started",
+            "action":"Complete",
+            "fields":{
+                "User Comments;textarea":"Test comment",
+                "Dispatched to P2P Date;input":"01 May 2019"
+            },
+            "submit":"Complete"
+        },
+        "task04":{
+            "name":"Confirm Invoice Payment Made (JP)",
+            "status":"Started",
+            "action":"Complete",
+            "fields":{
+                "User Comments;textarea":"Test comment",
+                "Payment Date;input":"01 May 2019"
+            },
+            "submit":"Complete"
+        },
+        "task05":{
+            "name":"Confirm Invoice Payment Received (JP)",
+            "status":"Started",
+            "action":"Complete",
+            "fields":{
+                "User Comments;textarea":"Test comment",
+                "Update Vendor Payment Confirmed Date;input":"01 May 2019"
+            },
+            "submit":"Complete"
+        }
+    }
+}

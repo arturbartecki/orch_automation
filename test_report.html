@@ -1,0 +1,155 @@
+
+Running tests... 
+----------------------------------------------------------------------
+ test_png_i_b_nd_pl_fcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.000000)s
+ test_png_i_b_nd_pl_lcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.000000)s
+ test_png_i_nb_dc_pl_fcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.000000)s
+ test_png_i_nb_dc_pl_lcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.000000)s
+ test_png_i_nb_dc_pn_fcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.000000)s
+ test_png_i_nb_dc_pn_lcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.000000)s
+ test_png_i_nb_nd_pl_fcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.000000)s
+ test_png_i_nb_nd_pl_lcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.001000)s
+ test_png_i_nb_nd_pn_fcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.000000)s
+ test_png_i_nb_nd_pn_lcl (JP_test_suite.CITPNGJPImportTests) ... SKIP (0.000000)s
+ test_png_jp_payment_fi (JP_test_suite.CITPNGJPPaymentTests) ... SKIP (0.000000)s
+ test_png_jp_payment_fi_3pl_access (JP_test_suite.CITPNGJPPaymentTests) ... ERROR (779.416888)s
+ test_png_jp_payment_fi_rejection (JP_test_suite.CITPNGJPPaymentTests) ... SKIP (0.000000)s
+ test_png_jp_payment_po (JP_test_suite.CITPNGJPPaymentTests) ... SKIP (0.000000)s
+ test_png_jp_payment_po_3pl_access (JP_test_suite.CITPNGJPPaymentTests) ... OK (466.870605)s
+ test_png_jp_payment_po_rejection (JP_test_suite.CITPNGJPPaymentTests) ... SKIP (0.000000)s
+ test_png_jp_payment_po_to_fi (JP_test_suite.CITPNGJPPaymentTests) ... SKIP (0.000000)s
+ test_png_jp_payment_po_to_fi_3pl_access (JP_test_suite.CITPNGJPPaymentTests) ... ERROR (333.219945)s
+
+======================================================================
+ERROR [779.416888s]: JP_test_suite.CITPNGJPPaymentTests.PNG Payment FI No change 3PL Has Access
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 88, in use_task_context_menu
+    //div[contains(text(), "{status}")]'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//tr[contains(@class, "context selected")]                //div[contains(text(), "Started")]"}
+  (Session info: chrome=74.0.3729.169)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 269, in refresh_task_list
+    actionChains.move_to_element(refresh).click(refresh).perform()
+  File "C:\Python37\lib\site-packages\selenium\webdriver\common\action_chains.py", line 83, in perform
+    action()
+  File "C:\Python37\lib\site-packages\selenium\webdriver\common\action_chains.py", line 277, in <lambda>
+    Command.MOVE_TO, {'element': to_element.id}))
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: element is not attached to the page document
+  (Session info: chrome=74.0.3729.169)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Praca\Automation\src\JP_test_suite.py", line 1428, in test_png_jp_payment_fi_3pl_access
+    orch_automation_tools.exectue_simple_task(driver, tasks['task04'])
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 291, in exectue_simple_task
+    use_task_context_menu(driver, task_name, task_status, context_action)
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 106, in use_task_context_menu
+    refresh_task_list(driver)
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 274, in refresh_task_list
+    '//div[contains(text(), "Selected")]'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="selected">...</div> is not clickable at point (1773, 185). Other element would receive the click: <li class="refresh">...</li>
+  (Session info: chrome=74.0.3729.169)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+======================================================================
+ERROR [333.219945s]: JP_test_suite.CITPNGJPPaymentTests.PNG Payment PO change to FI 3PL Has Access
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 83, in use_task_context_menu
+    f"//div[contains(text(),'{task_name}')]"
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[contains(text(),'Raised EPRF (JP)')]"}
+  (Session info: chrome=74.0.3729.169)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 269, in refresh_task_list
+    actionChains.move_to_element(refresh).click(refresh).perform()
+  File "C:\Python37\lib\site-packages\selenium\webdriver\common\action_chains.py", line 83, in perform
+    action()
+  File "C:\Python37\lib\site-packages\selenium\webdriver\common\action_chains.py", line 277, in <lambda>
+    Command.MOVE_TO, {'element': to_element.id}))
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.StaleElementReferenceException: Message: stale element reference: element is not attached to the page document
+  (Session info: chrome=74.0.3729.169)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Praca\Automation\src\JP_test_suite.py", line 1469, in test_png_jp_payment_po_to_fi_3pl_access
+    orch_automation_tools.exectue_simple_task(driver, tasks['task02'])
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 291, in exectue_simple_task
+    use_task_context_menu(driver, task_name, task_status, context_action)
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 106, in use_task_context_menu
+    refresh_task_list(driver)
+  File "C:\Praca\Automation\src\orch_automation_tools.py", line 274, in refresh_task_list
+    '//div[contains(text(), "Selected")]'
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="selected">...</div> is not clickable at point (1389, 185). Other element would receive the click: <li class="refresh">...</li>
+  (Session info: chrome=74.0.3729.169)
+  (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17763 x86_64)
+
+C:\Python37\lib\xml\etree\ElementTree.py:1269: ResourceWarning: unclosed <socket.socket fd=780, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 52705), raddr=('127.0.0.1', 52700)>
+  self._parser.feed(data)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+
+----------------------------------------------------------------------
+Ran 18 tests in 0:26:19
+
+FAILED
+ (Errors=2, Skipped=15)
+
+Generating HTML reports... 
+src\reports\TestResults_CITPNGJPPaymentTests_CITPNGJPImportTests_2019-05-28_10-51-18.html

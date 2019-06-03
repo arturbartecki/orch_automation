@@ -1,0 +1,34 @@
+{
+    "template_name":"PNGLO001R_JP_INVOICE_SO_FI_REJECT.xlsx",
+    "excel_data":{
+        "invoice_number":{
+            "control_num":"Yes",
+            "value":"JSSO",
+            "fields":[
+                "C3",
+                "D3"
+            ]
+        },
+        "payment_method":{
+            "control_num":"No",
+            "value":"FI (JP TCD)",
+            "fields":[
+                "L3"
+            ]
+        }
+    },
+    "payment_method":"FI (JP TCD)",
+    "tasks":{
+        "task01":{
+            "name":"Invoice Verification Complete (JP)",
+            "status":"Assigned",
+            "action":"Reject - Cancel Invoice",
+            "fields":{
+                "User Comments;textarea":"Test comment",
+                "Payment Method;select":"FI (JP TCD)",
+                "Update Verification Complete Date;input":"01 May 2019"
+            },
+            "submit":"Reject - Cancel Invoice"
+        }
+    }
+}
